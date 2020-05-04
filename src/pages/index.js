@@ -9,8 +9,11 @@ import Seo from "../components/Seo";
 class IndexPage extends React.Component {
   separator = React.createRef();
 
-  scrollToContent = e => {
-    this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
+  scrollToContent = (e) => {
+    this.separator.current.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
   };
 
   render() {
@@ -18,38 +21,42 @@ class IndexPage extends React.Component {
       data: {
         posts: { edges: posts = [] },
         bgDesktop: {
-          resize: { src: desktop }
+          resize: { src: desktop },
         },
         bgTablet: {
-          resize: { src: tablet }
+          resize: { src: tablet },
         },
         bgMobile: {
-          resize: { src: mobile }
+          resize: { src: mobile },
         },
         site: {
-          siteMetadata: { facebook }
-        }
-      }
+          siteMetadata: { facebook },
+        },
+      },
     } = this.props;
 
     const backgrounds = {
       desktop,
       tablet,
-      mobile
+      mobile,
     };
 
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
-          {theme => (
-            <Hero scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
+          {(theme) => (
+            <Hero
+              scrollToContent={this.scrollToContent}
+              backgrounds={backgrounds}
+              theme={theme}
+            />
           )}
         </ThemeContext.Consumer>
 
         <hr ref={this.separator} />
 
         <ThemeContext.Consumer>
-          {theme => <Blog posts={posts} theme={theme} />}
+          {(theme) => <Blog posts={posts} theme={theme} />}
         </ThemeContext.Consumer>
 
         <Seo facebook={facebook} />
@@ -66,7 +73,7 @@ class IndexPage extends React.Component {
 }
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default IndexPage;
@@ -109,17 +116,23 @@ export const query = graphql`
         }
       }
     }
-    bgDesktop: imageSharp(fluid: { originalName: { regex: "/hero-background/" } }) {
+    bgDesktop: imageSharp(
+      fluid: { originalName: { regex: "/hero-background/" } }
+    ) {
       resize(width: 1200, quality: 90, cropFocus: CENTER) {
         src
       }
     }
-    bgTablet: imageSharp(fluid: { originalName: { regex: "/hero-background/" } }) {
+    bgTablet: imageSharp(
+      fluid: { originalName: { regex: "/hero-background/" } }
+    ) {
       resize(width: 800, height: 1100, quality: 90, cropFocus: CENTER) {
         src
       }
     }
-    bgMobile: imageSharp(fluid: { originalName: { regex: "/hero-background/" } }) {
+    bgMobile: imageSharp(
+      fluid: { originalName: { regex: "/hero-background/" } }
+    ) {
       resize(width: 450, height: 850, quality: 90, cropFocus: CENTER) {
         src
       }

@@ -23,7 +23,7 @@ class Layout extends React.Component {
       font600loaded: false,
       screenWidth: 0,
       headerMinimized: false,
-      theme: themeObjectFromYaml
+      theme: themeObjectFromYaml,
     };
 
     if (typeof window !== `undefined`) {
@@ -36,7 +36,7 @@ class Layout extends React.Component {
 
   componentDidMount() {
     this.setState({
-      screenWidth: getScreenWidth()
+      screenWidth: getScreenWidth(),
     });
     if (typeof window !== "undefined") {
       window.addEventListener("resize", this.resizeThrottler, false);
@@ -44,7 +44,12 @@ class Layout extends React.Component {
   }
 
   resizeThrottler = () => {
-    return timeoutThrottlerHandler(this.timeouts, "resize", 100, this.resizeHandler);
+    return timeoutThrottlerHandler(
+      this.timeouts,
+      "resize",
+      100,
+      this.resizeHandler
+    );
   };
 
   resizeHandler = () => {
@@ -60,9 +65,7 @@ class Layout extends React.Component {
   };
 
   loadFont = (name, family, weight) => {
-    const font = new FontFaceObserver(family, {
-      weight: weight
-    });
+    const font = new FontFaceObserver(family, { weight });
 
     font.load(null, 10000).then(
       () => {
@@ -103,11 +106,11 @@ class Layout extends React.Component {
             }
           }
         `}
-        render={data => {
+        render={(data) => {
           const { children } = this.props;
           const {
             footnote: { html: footnoteHTML },
-            pages: { edges: pages }
+            pages: { edges: pages },
           } = data;
 
           return (
@@ -185,37 +188,7 @@ class Layout extends React.Component {
 Layout.propTypes = {
   children: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 export default Layout;
-
-//eslint-disable-next-line no-undef
-/*
-export const postQuery = graphql`
-  query LayoutQuery {
-    pages: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//pages//" }, fields: { prefix: { regex: "/^\\d+$/" } } }
-      sort: { fields: [fields___prefix], order: ASC }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            menuTitle
-          }
-        }
-      }
-    }
-    footnote: markdownRemark(fileAbsolutePath: { regex: "/footnote/" }) {
-      id
-      html
-    }
-  }
-`;
-
-*/

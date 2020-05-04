@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 
 import { FaArrowDown } from "react-icons/fa/";
 
-const Hero = props => {
+const Hero = (props) => {
   const { scrollToContent, backgrounds, theme } = props;
 
   return (
     <React.Fragment>
       <section className="hero">
         <h1>
-          This is a demo site of&nbsp;the <strong>heroBlog</strong> GatsbyJS starter
+          This is a demo site of&nbsp;the <strong>heroBlog</strong> GatsbyJS
+          starter
         </h1>
         <button onClick={scrollToContent} aria-label="scroll">
           <FaArrowDown />
@@ -135,7 +136,7 @@ const Hero = props => {
 Hero.propTypes = {
   scrollToContent: PropTypes.func.isRequired,
   backgrounds: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Hero;

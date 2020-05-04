@@ -2,7 +2,7 @@ import { FaAngleDown } from "react-icons/fa/";
 import PropTypes from "prop-types";
 import React from "react";
 
-const Expand = props => {
+const Expand = (props) => {
   const { onClick, theme } = props;
 
   return (
@@ -21,7 +21,8 @@ const Expand = props => {
           .more {
             background: ${theme.color.neutral.white};
             border: 1px solid ${theme.color.brand.primary};
-            border-radius: ${theme.size.radius.small} ${theme.size.radius.small} 0 0;
+            border-radius: ${theme.size.radius.small} ${theme.size.radius.small}
+              0 0;
             border-bottom: none;
             position: absolute;
             left: 50%;
@@ -114,7 +115,7 @@ const Expand = props => {
 
 Expand.propTypes = {
   onClick: PropTypes.func,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Expand;
