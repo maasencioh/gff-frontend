@@ -1,3 +1,5 @@
+const tailwindConfig = require('./tailwind.config.js');
+
 module.exports = {
   siteMetadata: {
     // edit below
@@ -17,6 +19,18 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require(`tailwindcss`)(tailwindConfig),
+          require(`autoprefixer`),
+          ...(process.env.NODE_ENV === `production`
+            ? [require(`cssnano`)]
+            : []),
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
