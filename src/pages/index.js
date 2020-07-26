@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 
 const IndexPage = ({ location }) => {
   const {
