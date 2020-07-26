@@ -4,6 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEO from '../components/Seo';
+import { About } from './about';
 
 const IndexPage = ({ location }) => {
   const {
@@ -45,7 +46,7 @@ const IndexPage = ({ location }) => {
                   <br className="xl:hidden" />
                   <span className="text-green-600"> crecimiento</span>
                 </h2>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   Sin ninguna experticia ni especialidad más allá de amar a
                   nuestros hijos.
                 </p>
@@ -71,6 +72,7 @@ const IndexPage = ({ location }) => {
                       href="https://www.instagram.com/growingfamilyfun/"
                       className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-green-700 transition duration-150 ease-in-out bg-green-100 border border-transparent rounded-md hover:text-green-600 hover:bg-green-50 focus:outline-none focus:shadow-outline-green focus:border-green-300 md:py-4 md:text-lg md:px-10"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       Instagram
                     </a>
@@ -88,6 +90,7 @@ const IndexPage = ({ location }) => {
           />
         </div>
       </div>
+      <About />
       <Footer />
     </div>
   );

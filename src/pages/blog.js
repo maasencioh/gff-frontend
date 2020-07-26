@@ -7,11 +7,10 @@ import SEO from '../components/Seo';
 class Blog extends React.Component {
   render() {
     const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMdx.edges;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location}>
         <SEO title="All posts" />
         <div style={{ margin: '20px 0 40px' }}>
           {posts.map(({ node }) => {
@@ -37,7 +36,7 @@ class Blog extends React.Component {
           })}
         </div>
         <Link to="/">
-          <button marginTop="85px">Go Home</button>
+          <button margintop="85px">Go Home</button>
         </Link>
       </Layout>
     );
@@ -48,11 +47,6 @@ export default Blog;
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {

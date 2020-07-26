@@ -57,8 +57,8 @@ const Header = ({ title, location }) => {
                 key={path}
                 className={`${
                   path === location?.pathname
-                    ? 'text-green-500 hover:text-green-900 hover:bg-green-50 hover:text-green-900 hover:bg-green-50 focus:text-green-900 focus:bg-green-50'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:bg-gray-50 focus:text-gray-900 focus:bg-gray-50'
+                    ? 'text-green-600 hover:text-green-900 hover:bg-green-50 hover:text-green-900 hover:bg-green-50 focus:text-green-900 focus:bg-green-50'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:text-gray-900 hover:bg-gray-50 focus:text-gray-900 focus:bg-gray-50'
                 } ml-8 font-medium transition duration-150 ease-in-out`}
               >
                 {name}
