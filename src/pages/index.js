@@ -70,6 +70,7 @@ const IndexPage = ({ location }) => {
                     <a
                       href="https://www.instagram.com/growingfamilyfun/"
                       className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-green-700 transition duration-150 ease-in-out bg-green-100 border border-transparent rounded-md hover:text-green-600 hover:bg-green-50 focus:outline-none focus:shadow-outline-green focus:border-green-300 md:py-4 md:text-lg md:px-10"
+                      target="_blank"
                     >
                       Instagram
                     </a>
@@ -81,9 +82,9 @@ const IndexPage = ({ location }) => {
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img
-            className="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-            alt=""
+            className="object-cover w-full h-72 sm:h-72 md:h-96 lg:w-full lg:h-full"
+            src="family_park.jpg"
+            alt="familia junta en el parque"
           />
         </div>
       </div>
