@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
