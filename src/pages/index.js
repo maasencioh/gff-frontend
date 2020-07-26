@@ -1,143 +1,99 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { graphql } from "gatsby";
-import { ThemeContext } from "../layouts";
-import Blog from "../components/Blog";
-import Hero from "../components/Hero";
-import Seo from "../components/Seo";
+import React from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
-class IndexPage extends React.Component {
-  separator = React.createRef();
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SEO from '../components/Seo';
+import { About } from './about';
 
-  scrollToContent = (e) => {
-    this.separator.current.scrollIntoView({
-      block: "start",
-      behavior: "smooth",
-    });
-  };
-
-  render() {
-    const {
-      data: {
-        posts: { edges: posts = [] },
-        bgDesktop: {
-          resize: { src: desktop },
-        },
-        bgTablet: {
-          resize: { src: tablet },
-        },
-        bgMobile: {
-          resize: { src: mobile },
-        },
-        site: {
-          siteMetadata: { facebook },
-        },
-      },
-    } = this.props;
-
-    const backgrounds = {
-      desktop,
-      tablet,
-      mobile,
-    };
-
-    return (
-      <React.Fragment>
-        <ThemeContext.Consumer>
-          {(theme) => (
-            <Hero
-              scrollToContent={this.scrollToContent}
-              backgrounds={backgrounds}
-              theme={theme}
-            />
-          )}
-        </ThemeContext.Consumer>
-
-        <hr ref={this.separator} />
-
-        <ThemeContext.Consumer>
-          {(theme) => <Blog posts={posts} theme={theme} />}
-        </ThemeContext.Consumer>
-
-        <Seo facebook={facebook} />
-
-        <style jsx>{`
-          hr {
-            margin: 0;
-            border: 0;
+const IndexPage = ({ location }) => {
+  const {
+    site: {
+      siteMetadata: { title },
+    },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
           }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
+        }
+      }
+    `,
+  );
 
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  return (
+    <div className="min-h-screen">
+      <SEO title="Home" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+      <div className="relative overflow-hidden bg-white">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+            <svg
+              className="absolute inset-y-0 right-0 hidden w-48 h-full text-white transform translate-x-1/2 lg:block"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              <polygon points="50,0 100,0 50,100 0,100" />
+            </svg>
+
+            <Header title={title} location={location} />
+            <main className="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+              <div className="sm:text-center lg:text-left">
+                <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+                  Joven familia en
+                  <br className="xl:hidden" />
+                  <span className="text-green-600"> crecimiento</span>
+                </h2>
+                <p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  Sin ninguna experticia ni especialidad más allá de amar a
+                  nuestros hijos.
+                </p>
+                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  <div className="rounded-md shadow">
+                    <Link
+                      to="/blog"
+                      className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green md:py-4 md:text-lg md:px-10"
+                    >
+                      Leer más
+                    </Link>
+                  </div>
+                  <div className="mt-3 sm:mt-0 sm:ml-3">
+                    <Link
+                      to="/about"
+                      className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-green-700 transition duration-150 ease-in-out bg-green-100 border border-transparent rounded-md hover:text-green-600 hover:bg-green-50 focus:outline-none focus:shadow-outline-green focus:border-green-300 md:py-4 md:text-lg md:px-10"
+                    >
+                      Conocenos
+                    </Link>
+                  </div>
+                  <div className="mt-3 sm:mt-0 sm:ml-3">
+                    <a
+                      href="https://www.instagram.com/growingfamilyfun/"
+                      className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-green-700 transition duration-150 ease-in-out bg-green-100 border border-transparent rounded-md hover:text-green-600 hover:bg-green-50 focus:outline-none focus:shadow-outline-green focus:border-green-300 md:py-4 md:text-lg md:px-10"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Instagram
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <img
+            className="object-cover w-full h-72 sm:h-72 md:h-96 lg:w-full lg:h-full"
+            src="family_park.jpg"
+            alt="familia junta en el parque"
+          />
+        </div>
+      </div>
+      <About />
+      <Footer />
+    </div>
+  );
 };
 
 export default IndexPage;
-
-//eslint-disable-next-line no-undef
-export const query = graphql`
-  query IndexQuery {
-    posts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            category
-            author
-            cover {
-              children {
-                ... on ImageSharp {
-                  fluid(maxWidth: 800, maxHeight: 360) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        facebook {
-          appId
-        }
-      }
-    }
-    bgDesktop: imageSharp(
-      fluid: { originalName: { regex: "/hero-background/" } }
-    ) {
-      resize(width: 1200, quality: 90, cropFocus: CENTER) {
-        src
-      }
-    }
-    bgTablet: imageSharp(
-      fluid: { originalName: { regex: "/hero-background/" } }
-    ) {
-      resize(width: 800, height: 1100, quality: 90, cropFocus: CENTER) {
-        src
-      }
-    }
-    bgMobile: imageSharp(
-      fluid: { originalName: { regex: "/hero-background/" } }
-    ) {
-      resize(width: 450, height: 850, quality: 90, cropFocus: CENTER) {
-        src
-      }
-    }
-  }
-`;
-
-//hero-background
