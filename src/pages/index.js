@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,12 +12,22 @@ const IndexPage = ({ location }) => {
     site: {
       siteMetadata: { title },
     },
+    file: {
+      childImageSharp: { fluid },
+    },
   } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             title
+          }
+        }
+        file(relativePath: { eq: "family_park.jpg" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -83,9 +94,9 @@ const IndexPage = ({ location }) => {
           </div>
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
+          <Img
             className="object-cover w-full h-72 sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="family_park.jpg"
+            fluid={fluid}
             alt="familia junta en el parque"
           />
         </div>

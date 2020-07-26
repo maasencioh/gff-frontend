@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -51,7 +51,7 @@ const BlogPostTemplate = ({
             {post.frontmatter.date}
           </span>
         </div>
-        <div className="max-w-4xl mt-4 text-base leading-7 text-gray-900 lg:mx-auto">
+        <div className="max-w-4xl mt-4 text-base leading-7 text-gray-900 lg:mx-auto blog-content">
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
       </div>
