@@ -4,10 +4,10 @@ module.exports = {
   siteMetadata: {
     // edit below
     title: `Growing Family Fun`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Una familia que quiere hablar sobre lo que creemos y como nuestras experiencias nos han llevado a hablar sobre lo que nos interesa`,
+    siteUrl: `https://growingfamily.fun/`,
     social: {
-      twitter: `gatsbyjs`,
+      instagram: `growingfamilyfun`,
     },
   },
   plugins: [
@@ -84,14 +84,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Growing Family Fun`,
+        short_name: `GFF`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/gff-icon.png`,
       },
     },
   ],
