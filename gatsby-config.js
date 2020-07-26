@@ -5,14 +5,13 @@ module.exports = {
     // edit below
     title: `Growing Family Fun`,
     description: `Una familia que quiere hablar sobre lo que creemos y como nuestras experiencias nos han llevado a hablar sobre lo que nos interesa`,
-    siteUrl: `https://growingfamily.fun/`,
+    siteUrl: `https://growingfamily.fun`,
     social: {
       instagram: `growingfamilyfun`,
     },
   },
   plugins: [
     `gatsby-plugin-netlify-cms`,
-    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
