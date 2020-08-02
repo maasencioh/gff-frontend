@@ -1,38 +1,37 @@
 /*! purgecss start ignore */
 @tailwind base;
 @tailwind components;
-/*! purgecss end ignore */
 
 .grid-layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-.blog-content h1 {
+.blog-content > h1 {
   @apply text-3xl;
   @apply font-bold;
 }
 
-.blog-content h2 {
+.blog-content > h2 {
   @apply text-2xl;
   @apply font-bold;
 }
 
-.blog-content h3 {
+.blog-content > h3 {
   @apply text-xl;
   @apply font-bold;
 }
 
-.blog-content h4 {
+.blog-content > h4 {
   @apply text-lg;
   @apply font-bold;
 }
 
-.blog-content a {
+.blog-content > a {
   @apply text-green-500;
 }
 
-.blog-content blockquote {
+.blog-content > blockquote {
   @apply border-l-4;
   @apply border-green-600;
   @apply pl-4;
@@ -40,4 +39,5 @@
   @apply italic;
 }
 
+/*! purgecss end ignore */
 @tailwind utilities;
