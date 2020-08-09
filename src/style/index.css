@@ -8,21 +8,27 @@
 }
 
 .blog-content > h1 {
+  @apply mb-2;
   @apply text-3xl;
   @apply font-bold;
 }
 
 .blog-content > h2 {
+  @apply mt-6;
+  @apply mb-2;
   @apply text-2xl;
   @apply font-bold;
 }
 
 .blog-content > h3 {
+  @apply mt-4;
+  @apply mb-2;
   @apply text-xl;
   @apply font-bold;
 }
 
 .blog-content > h4 {
+  @apply my-2;
   @apply text-lg;
   @apply font-bold;
 }
@@ -31,7 +37,12 @@
   @apply text-green-500;
 }
 
+.blog-content > p > a:hover {
+  @apply text-green-700;
+}
+
 .blog-content > blockquote {
+  @apply my-2;
   @apply border-l-4;
   @apply border-green-600;
   @apply pl-4;

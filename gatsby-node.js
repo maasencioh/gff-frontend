@@ -26,9 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `,
   ).then((result) => {
-    if (result.errors) {
-      throw result.errors;
-    }
+    if (result.errors) throw result.errors;
 
     // Create blog posts pages.
     const posts = result.data.allMdx.edges;
@@ -58,10 +56,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
+    createNodeField({ name: `slug`, node, value });
   }
 };
