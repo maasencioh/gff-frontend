@@ -46,7 +46,7 @@ export const About = () => (
                 </h4>
                 <p className="mt-2 text-base leading-6 text-gray-600">
                   Tu hijo merece todo respeto y afecto posible, por lo cual no
-                  creemos en criar usando el maltrato como aliciente
+                  creemos en criar usando el maltrato como guia.
                 </p>
               </div>
             </div>
